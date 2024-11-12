@@ -1,19 +1,41 @@
 package com.example.project7
 
-class Balloons {
-    private lateinit var balloonList : ArrayList<Balloon>
+class Balloon {
+    private var x : Int = 0
+    private var y : Int = 0
+    private var radius : Int = 0
 
     constructor() {
         // The constructor should be empty.
     }
 
-    // Adds a balloon to balloonList.
-    fun add(balloon: Balloon) {
-        balloonList.add(balloon)
+    // Sets the X coordinate of the balloon.
+    fun setX(newX : Int) {
+        x = newX
     }
 
-    // Returns the ArrayList of Balloon objects.
-    fun getBalloons() : ArrayList<Balloon> {
-        return balloonList
+    // Sets the Y coordinate of the balloon.
+    fun setY(newY : Int) {
+        y = newY
+    }
+
+    // Sets the radius of the balloon.
+    fun setRadius(newRadius : Int) {
+        radius = newRadius
+    }
+
+    // Returns the X coordinate of the balloon.
+    fun getX() : Int {
+        return x
+    }
+
+    // Returns the X coordinate of the balloon.
+    fun getY() : Int {
+        return y
+    }
+
+    // Returns the X coordinate of the balloon.
+    fun getRadius() : Int {
+        return radius
     }
 }
