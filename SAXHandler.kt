@@ -18,7 +18,7 @@ class SAXHandler : DefaultHandler() {
         if(qName != null) {
             element = qName
             if(element.equals("balloon")) {
-                currentItem = Balloon()
+                currentBalloon = Balloon()
             }
         }
     }
@@ -44,13 +44,14 @@ class SAXHandler : DefaultHandler() {
             else if (currentBalloon != null && element.equals("y") && validText) {
               currentBalloon!!.setY(text.toInt())
             }
-            else if (currentBalloon != null && element.equals("radius" && validText) {
+            else if (currentBalloon != null && element.equals("radius") && validText) {
               currentBalloon!!.setRadius(text.toInt())
             }
         }
     }
 
     fun getBalloons() : ArrayList<Balloon> {
-         return balloons
+        TODO("Fix this type mismatch.")
+        return balloons
     }
 }
