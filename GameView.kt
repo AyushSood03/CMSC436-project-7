@@ -5,6 +5,8 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.view.View
+import javax.xml.parsers.SAXParser
+import javax.xml.parsers.SAXParserFactory
 
 class GameView: View {
     private lateinit var paint : Paint
@@ -22,7 +24,14 @@ class GameView: View {
         paint.strokeWidth = 20.0f
         paint.textSize = 70f
 
-        TODO("Assign balloons.")
+        // Parses the balloons XML file. For the final submission, this should be balloons3.xml
+        var factory : SAXParserFactory = SAXParserFactory.newInstance()
+        var parser : SAXParser = factory.newSAXParser()
+        var handler : SAXHandler = SAXHandler()
+        var iStream : InputStream = resources.openRawResources(R.raw.balloons3)
+        parser.parse(iStream, handler)
+        // Assigns the parsed Balloons object to balloons.
+        balloons = handler.getBalloons()
     }
 
     // Most of this is just adjustments from my Project 5 - Leo.
@@ -32,6 +41,8 @@ class GameView: View {
         var balloonList : ArrayList<Balloon> = balloons.getBalloons()
 
         for (balloon in balloonList) {
+            // Should we add a boolean to the Balloon class to track if a balloon is popped?
+            // Then we could only draw a Balloon if it hasn't been popped.
             var x : Float = balloon.getX().toFloat()
             var y : Float = balloon.getY().toFloat()
             var radius : Float = balloon.getRadius().toFloat()
