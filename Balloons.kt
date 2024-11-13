@@ -5,6 +5,7 @@ class Balloons {
 
     constructor() {
         // The constructor should be empty.
+        balloonList = arrayListOf<Balloon>()
     }
 
     // Adds a balloon to balloonList.

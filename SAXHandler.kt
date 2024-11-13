@@ -29,7 +29,7 @@ class SAXHandler : DefaultHandler() {
         validText = false
         if(currentBalloon != null && qName != null && qName.equals("balloon")) {
             balloons.add(currentBalloon!!)
-            Log.w("MainActivity", "x: " + currentBalloon.getX().toString() + ", y: " + currentBalloon.getY.toString()  + ", radius: " + currentBalloon.getRadius().toString())
+            Log.w("MainActivity", "x: " + currentBalloon!!.getX().toString() + ", y: " + currentBalloon!!.getY().toString()  + ", radius: " + currentBalloon!!.getRadius().toString())
         }
     }
 

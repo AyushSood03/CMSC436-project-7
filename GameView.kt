@@ -29,7 +29,7 @@ class GameView: View {
         var factory : SAXParserFactory = SAXParserFactory.newInstance()
         var parser : SAXParser = factory.newSAXParser()
         var handler : SAXHandler = SAXHandler()
-        var iStream : InputStream = resources.openRawResources(R.raw.balloons3)
+        var iStream : InputStream = resources.openRawResource(R.raw.balloons3)
         parser.parse(iStream, handler)
         // Assigns the parsed Balloons object to balloons.
         balloons = handler.getBalloons()
