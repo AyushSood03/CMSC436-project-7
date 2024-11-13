@@ -29,6 +29,7 @@ class SAXHandler : DefaultHandler() {
         validText = false
         if(currentBalloon != null && qName != null && qName.equals("balloon")) {
             balloons.add(currentBalloon!!)
+            Log.w("MainActivity", "x: " + currentBalloon.getX().toString() + ", y: " + currentBalloon.getY.toString()  + ", radius: " + currentBalloon.getRadius().toString())
         }
     }
 
@@ -50,8 +51,7 @@ class SAXHandler : DefaultHandler() {
         }
     }
 
-    fun getBalloons() : ArrayList<Balloon> {
-        TODO("Fix this type mismatch.")
+    fun getBalloons() : Balloons {
         return balloons
     }
 }
