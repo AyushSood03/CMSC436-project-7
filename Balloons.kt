@@ -1,18 +1,40 @@
 package com.example.project7
 
+import android.util.Log
+
 class Balloons {
-    private lateinit var balloonList : ArrayList<Balloon>
+    private var balloonList : ArrayList<Balloon> = arrayListOf<Balloon>()
     private var attemptsUsed: Int = 0
     private var attemptsAllowed: Int = 0
 
     constructor() {
         // The constructor should be empty.
-        balloonList = arrayListOf<Balloon>()
     }
 
     // Adds a balloon to balloonList.
     fun add(balloon: Balloon) {
         balloonList.add(balloon)
+    }
+
+    // Runs through each balloon and determines if the click happened within
+    // the radius of the balloon.
+    fun findBalloonClicked(clickX : Double, clickY : Double) {
+        var balloonPopped : Boolean = false
+
+        for (balloon in balloonList) {
+            var xPart = Math.pow((clickX - balloon.getX().toDouble()), 2.0)
+            var yPart = Math.pow((clickY - balloon.getY().toDouble()), 2.0)
+            var distance = Math.sqrt(xPart + yPart)
+
+
+            if (distance <= balloon.getRadius() && !balloon.isPopped()) {
+                balloon.pop()
+                balloonPopped = true
+            }
+        }
+
+        incrementAttempts()
+        TODO("Make the player win or lose when running out of attempts.")
     }
 
     // Returns the ArrayList of Balloon objects.

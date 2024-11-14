@@ -4,6 +4,8 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import java.io.InputStream
 import javax.xml.parsers.SAXParser
@@ -35,9 +37,20 @@ class GameView: View {
         balloons = handler.getBalloons()
     }
 
+    // This activates when the user tap anywhere on the screen. It adjusts and
+    // converts the tap coordinates to doubles before calling findBalloonClicked().
+    fun whenClicked(e : MotionEvent) {
+        var x : Double = e.x.toDouble()
+        // I had to manually offset the y-coordinate by 125 because for SOME REASON
+        // it kept changing that on me!!! I SPENT ABOUT 1.5 HOURS ON THIS!!!
+        var y : Double = e.y.toDouble() - 125
+        balloons.findBalloonClicked(x, y)
+    }
+
     // Most of this is just adjustments from my Project 5 - Leo.
     override fun onDraw(canvas : Canvas) {
         super.onDraw(canvas)
+        Log.w("MainActivity", "" + height)
 
         var balloonList : ArrayList<Balloon> = balloons.getBalloons()
 
@@ -49,6 +62,5 @@ class GameView: View {
                 canvas.drawCircle(x, y, radius, paint)
             }
         }
-        // Drawing the balloons.
     }
 }
