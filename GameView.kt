@@ -42,12 +42,12 @@ class GameView: View {
         var balloonList : ArrayList<Balloon> = balloons.getBalloons()
 
         for (balloon in balloonList) {
-            // Should we add a boolean to the Balloon class to track if a balloon is popped?
-            // Then we could only draw a Balloon if it hasn't been popped.
-            var x : Float = balloon.getX().toFloat()
-            var y : Float = balloon.getY().toFloat()
-            var radius : Float = balloon.getRadius().toFloat()
-            canvas.drawCircle(x, y, radius, paint)
+            if (!balloon.isPopped()) {
+                var x : Float = balloon.getX().toFloat()
+                var y : Float = balloon.getY().toFloat()
+                var radius : Float = balloon.getRadius().toFloat()
+                canvas.drawCircle(x, y, radius, paint)
+            }
         }
         // Drawing the balloons.
     }

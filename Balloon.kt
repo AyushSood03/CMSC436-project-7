@@ -4,6 +4,7 @@ class Balloon {
     private var x : Int = 0
     private var y : Int = 0
     private var radius : Int = 0
+    private var popped : Boolean = false
 
     constructor() {
         // The constructor should be empty.
@@ -37,5 +38,13 @@ class Balloon {
     // Returns the X coordinate of the balloon.
     fun getRadius() : Int {
         return radius
+    }
+
+    fun isPopped(): Boolean {
+        return popped
+    }
+
+    fun pop(): Unit {
+        popped = true
     }
 }

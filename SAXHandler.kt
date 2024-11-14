@@ -31,6 +31,7 @@ class SAXHandler : DefaultHandler() {
             balloons.add(currentBalloon!!)
             Log.w("MainActivity", "x: " + currentBalloon!!.getX().toString() + ", y: " + currentBalloon!!.getY().toString()  + ", radius: " + currentBalloon!!.getRadius().toString())
         }
+        balloons.setAttemptLimit(balloons.getBalloons().size + 3)
     }
 
     override fun characters(ch: CharArray?, start: Int, length: Int) {
