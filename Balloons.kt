@@ -19,8 +19,6 @@ class Balloons {
     // Runs through each balloon and determines if the click happened within
     // the radius of the balloon.
     fun findBalloonClicked(clickX : Double, clickY : Double) {
-        var balloonPopped : Boolean = false
-
         for (balloon in balloonList) {
             var xPart = Math.pow((clickX - balloon.getX().toDouble()), 2.0)
             var yPart = Math.pow((clickY - balloon.getY().toDouble()), 2.0)
@@ -29,12 +27,10 @@ class Balloons {
 
             if (distance <= balloon.getRadius() && !balloon.isPopped()) {
                 balloon.pop()
-                balloonPopped = true
             }
         }
 
         incrementAttempts()
-        TODO("Make the player win or lose when running out of attempts.")
     }
 
     // Returns the ArrayList of Balloon objects.

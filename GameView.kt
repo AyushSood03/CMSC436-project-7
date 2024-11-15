@@ -37,6 +37,10 @@ class GameView: View {
         balloons = handler.getBalloons()
     }
 
+    fun getBalloons(): Balloons {
+        return balloons
+    }
+
     // This activates when the user tap anywhere on the screen. It adjusts and
     // converts the tap coordinates to doubles before calling findBalloonClicked().
     fun whenClicked(e : MotionEvent) {
@@ -50,7 +54,7 @@ class GameView: View {
     // Most of this is just adjustments from my Project 5 - Leo.
     override fun onDraw(canvas : Canvas) {
         super.onDraw(canvas)
-        Log.w("MainActivity", "" + height)
+        // Log.w("MainActivity", "" + height)
 
         var balloonList : ArrayList<Balloon> = balloons.getBalloons()
 
