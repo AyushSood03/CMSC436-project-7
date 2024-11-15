@@ -24,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         updateView()
     }
 
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        buildViewByCode()
+    }
+
     fun updateView() {
         gameView.postInvalidate()
     }
@@ -37,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         window.decorView.getWindowVisibleDisplayFrame(rectangle)
         // Log.w("MainActivity", "Top: " + (height - rectangle.top))
 
-        gameView = GameView(this, width, height - rectangle.top)
+        gameView = GameView(this, width, height - rectangle.top, rectangle.top)
         balloons = gameView.getBalloons()
         setContentView(gameView)
 

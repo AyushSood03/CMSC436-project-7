@@ -16,11 +16,13 @@ class GameView: View {
 
     private var width : Int = 0
     private var height : Int = 0
+    private var offset : Int = 0
     private lateinit var balloons : Balloons
 
-    constructor(context: Context, width : Int, height : Int): super(context) {
+    constructor(context: Context, width : Int, height : Int, offset: Int): super(context) {
         this.width = width
         this.height = height
+        this.offset = offset
         paint = Paint()
         paint.isAntiAlias = true
         paint.color = Color.BLUE
@@ -45,9 +47,7 @@ class GameView: View {
     // converts the tap coordinates to doubles before calling findBalloonClicked().
     fun whenClicked(e : MotionEvent) {
         var x : Double = e.x.toDouble()
-        // I had to manually offset the y-coordinate by 125 because for SOME REASON
-        // it kept changing that on me!!! I SPENT ABOUT 1.5 HOURS ON THIS!!!
-        var y : Double = e.y.toDouble() - 125
+        var y : Double = e.y.toDouble() - this.offset
         balloons.findBalloonClicked(x, y)
     }
 
